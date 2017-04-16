@@ -1,0 +1,56 @@
+﻿<Window x:Class="ExchangeCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local ="clr-namespace:ExchangeCalculator"
+        mc:Ignorable="d"
+        Title="Currency calculator" Height="134.646" Width="525" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <!--<Style TargetType="ComboBox">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>-->
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="TextAlignment" Value="Right"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="labelInputAmmount"  Content="Ammount" Grid.Row="0" Grid.Column="0" />
+        <Label x:Name="labelInputCurrenct" Content="Currency" Grid.Row="0" Grid.Column="1"/>
+        <Label x:Name="labelOutputCurrenct" Content="Currency" Grid.Row="0" Grid.Column="2"/>
+        <Label x:Name="labelOutputAmmount" Content="Ammount" Grid.Row="0" Grid.Column="3" />
+
+        <TextBox x:Name="textBoxInputAmmount" Text="{Binding Path = InputValue, Mode = TwoWay}" Grid.Row="1" Grid.Column="0"></TextBox>
+        <ComboBox x:Name="comboBoxInputCurrency" Grid.Row="1" Grid.Column="1"
+                  ItemsSource="{Binding Path=Currencies}"
+                  DisplayMemberPath="currency"
+                  SelectedValuePath="id"
+                  SelectedValue="{Binding Path=InputCurrencyId}" Margin="10" Height="24" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxOutputCurrency" Grid.Row="1" Grid.Column="2"
+                  ItemsSource="{Binding Path=Currencies}"
+                  DisplayMemberPath="currency"
+                  SelectedValuePath="id"
+                  SelectedValue="{Binding Path=OutputCurrencyId}" Margin="10"  Height="24" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxOutputAmmount" Text="{Binding Path = OutputValue, Mode = TwoWay}" Grid.Row="1" Grid.Column="3"></TextBox>
+
+    </Grid>
+</Window>
