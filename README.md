@@ -1,0 +1,2 @@
+# ExchangeCalculator
+Simple Exchange Calculator
